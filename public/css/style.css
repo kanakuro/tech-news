@@ -1,0 +1,20 @@
+header {
+    padding: 5rem 10rem 2.5rem 7rem;
+}
+
+.field {
+    padding: 2.5rem 10rem 5rem 7rem;
+}
+.card_body {
+    width: 80%;
+}
+.news_thumbnail {
+    width: 30%;
+}
+
+@media screen and (max-width: 959px) {
+    /* 959px以下に適用されるCSS（タブレット用） */
+}
+@media screen and (max-width: 480px) {
+    /* 480px以下に適用されるCSS（スマホ用） */
+}
