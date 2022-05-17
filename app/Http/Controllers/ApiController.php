@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FavoriteNews;
+use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
@@ -15,11 +17,9 @@ class ApiController extends Controller
             $method = "GET";
             // 15記事表示
             $count = 15;
-
             // API接続
             $client = new Client();
             $response = $client->request($method, $url);
-
             $results = $response->getBody();
             //jsonを連想配列にする
             $articles = json_decode($results, true);
@@ -40,5 +40,14 @@ class ApiController extends Controller
             }
         }
         return view('index', compact('news'));
+    }
+
+    public function registFav(Request $request)
+    {
+        $fav_url = $request->url;
+        $fav_id = $request->id;
+        $user_id = 99;
+        FavoriteNews::registFav($user_id, $fav_id, $fav_url);
+        return;
     }
 }
