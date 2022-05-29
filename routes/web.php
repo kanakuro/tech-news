@@ -14,7 +14,9 @@ use App\Http\Controllers\ApiController;
 |
 */
 Route::get('/index', [ApiController::class, 'index']);
-Route::get('/favorite', [ApiController::class, 'registFav']);
+Route::get('/post_favorite', [ApiController::class, 'registFav']);
+Route::get('/get_favorite', [ApiController::class, 'getFav']);
+Route::get('/invalid_favorite', [ApiController::class, 'invalidFav']);
 
 // Route::get('/', function () {
 //     // return view('welcome');

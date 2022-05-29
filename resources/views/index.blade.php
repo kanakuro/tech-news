@@ -13,6 +13,11 @@
 <header>
     <h1>tech-news</h1>
 </header>
+<div class="header_menu">
+    <div class="fav_list">
+        <button class="to_fav_list">お気に入り</button>
+    </div>
+</div>
 @include('news')
 <footer>
 </footer>
