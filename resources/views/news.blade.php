@@ -9,8 +9,14 @@
                 <img src="{{$data['thumbnail']}}" class="news_thumbnail">
             </div>
         </div>
-        <div class="favorite" id="favorite_0{{$loop->index}}">♡</div>
-        <div class="favorite_after" id="favorite_after_0{{$loop->index}}" style="display:none;">💖</div>
+        @if($data['fav'] == 0)
+            <div class="favorite" id="favorite_0{{$loop->index}}">♡</div>
+            <div class="favorite_after" id="favorite_after_0{{$loop->index}}" style="display:none;">💖</div>
+        @elseif($data['fav'] == 1)
+            <div class="favorite" id="favorite_0{{$loop->index}}" style="display:none;">♡</div>
+            <div class="favorite_after" id="favorite_after_0{{$loop->index}}">💖</div>
+        @endif
+
     </div>
     @endforeach
     <div class="fav_data_body" style="display:none;">

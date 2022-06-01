@@ -1,7 +1,10 @@
 header {
     padding: 5rem 10rem 2.5rem 7rem;
 }
-
+.header_menu{
+    display: flex;
+    padding: 1rem 1rem 1rem 7rem;
+}
 .field {
     padding: 2.5rem 10rem 5rem 7rem;
 }

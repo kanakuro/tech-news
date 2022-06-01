@@ -17,6 +17,9 @@
     <div class="fav_list">
         <button class="to_fav_list">お気に入り</button>
     </div>
+    <div class="news_list">
+        <button class="to_news_list">ニュース一覧</button>
+    </div>
 </div>
 @include('news')
 <footer>

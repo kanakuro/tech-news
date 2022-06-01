@@ -6,15 +6,28 @@ $(function () {
         var fav_id = $(this).attr("id").slice(9, 11);
         $("#favorite_" + fav_id).hide();
         $("#favorite_after_" + fav_id).show();
-        fav_url = $("#card_title_" + fav_id)
-            .find("a")
-            .attr("href");
-        fav_title = $("#card_title_" + fav_id)
-            .find("a")
-            .text();
-        fav_image_url = $("#card_text_" + fav_id)
-            .find("img.news_thumbnail")
-            .attr("src");
+        let favOrNews = $(this).parent().attr("class");
+        if (favOrNews == "clone_fav") {
+            fav_url = $("#fav_card_title_" + fav_id)
+                .find("a")
+                .attr("href");
+            fav_title = $("#fav_card_title_" + fav_id)
+                .find("a")
+                .text();
+            fav_image_url = $("#fav_card_text_" + fav_id)
+                .find("img.news_thumbnail")
+                .attr("src");
+        } else if (favOrNews == "data_body") {
+            fav_url = $("#card_title_" + fav_id)
+                .find("a")
+                .attr("href");
+            fav_title = $("#card_title_" + fav_id)
+                .find("a")
+                .text();
+            fav_image_url = $("#card_text_" + fav_id)
+                .find("img.news_thumbnail")
+                .attr("src");
+        }
         // お気に入り登録
         $.ajax({
             headers: {
@@ -40,15 +53,30 @@ $(function () {
         $("#favorite_" + fav_id).show();
         $("#favorite_after_" + fav_id).hide();
         // お気に入り論理削除
-        fav_url = $("#card_title_" + fav_id)
-            .find("a")
-            .attr("href");
-        fav_title = $("#card_title_" + fav_id)
-            .find("a")
-            .text();
-        fav_image_url = $("#card_text_" + fav_id)
-            .find("img.news_thumbnail")
-            .attr("src");
+        let favOrData = $(this).parent().attr("class");
+        if (favOrData == "clone_fav") {
+            fav_url = $("#fav_card_title_" + fav_id)
+                .find("a")
+                .attr("href");
+            fav_title = $("#fav_card_title_" + fav_id)
+                .find("a")
+                .text();
+            fav_image_url = $("#fav_card_text_" + fav_id)
+                .find("img.news_thumbnail")
+                .attr("src");
+        } else if (favOrData == "data_body") {
+            fav_url = $("#card_title_" + fav_id)
+                .find("a")
+                .attr("href");
+            fav_title = $("#card_title_" + fav_id)
+                .find("a")
+                .text();
+            fav_image_url = $("#card_text_" + fav_id)
+                .find("img.news_thumbnail")
+                .attr("src");
+        } else {
+            return;
+        }
         $.ajax({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -99,6 +127,11 @@ $(function () {
             },
             error: function (err) {},
         });
+    });
+
+    $(".to_news_list").click(function () {
+        // 画面をリロード
+        location.reload();
     });
 
     function cloneFav(index) {

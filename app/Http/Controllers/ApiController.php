@@ -27,13 +27,30 @@ class ApiController extends Controller
 
             $news = [];
 
+            $fav_lists = FavoriteNews::where('user_id', 99)
+            ->where('invalid', 0)
+            ->get();
+
             for ($id = 0; $id < $count; $id++) {
+                $is_fav = 0;
+                $news_name = $articles['articles'][$id]['title'];
+                $news_url = $articles['articles'][$id]['url'];
+                $news_thumbnail = $articles['articles'][$id]['urlToImage'];
+                // お気に入り登録されているか
+                foreach ($fav_lists as $index => $fav_list) {
+                    if ($fav_list -> news_url == $news_url) {
+                        $is_fav = 1;
+                        break;
+                    }
+                }
                 array_push($news, [
-                    'name' => $articles['articles'][$id]['title'],
-                    'url' => $articles['articles'][$id]['url'],
-                    'thumbnail' => $articles['articles'][$id]['urlToImage'],
+                    'name' => $news_name,
+                    'url' => $news_url,
+                    'thumbnail' => $news_thumbnail,
+                    'fav' => $is_fav
                 ]);
             }
+            \Log::debug($news);
         } catch (RequestException $e) {
             echo Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
