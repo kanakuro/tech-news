@@ -3,7 +3,7 @@
     <div class="data_body" id="data_body_0{{$loop->index}}">
         <div class="card_body" id="card_body_0{{$loop->index}}">
             <h3 class="card_title" id="card_title_0{{$loop->index}}">
-                <a href="{{$data['url']}}">{{$data['name']}}</a>
+                <a href="{{$data['url']}}" target="_blank" rel="noopener noreferrer">{{$data['name']}}</a>
             </h3>
             <div class="card_text" id="card_text_0{{$loop->index}}">
                 <img src="{{$data['thumbnail']}}" class="news_thumbnail">
@@ -23,7 +23,7 @@
         <div class="clone_fav" id="original">
             <div class="fav_card_body">
                 <h3 class="fav_card_title">
-                    <a href=""></a>
+                    <a href="" target="_blank" rel="noopener noreferrer"></a>
                 </h3>
                 <div class="fav_card_text">
                     <img src="" class="news_thumbnail">
