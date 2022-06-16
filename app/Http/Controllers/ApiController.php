@@ -50,7 +50,7 @@ class ApiController extends Controller
                     'fav' => $is_fav
                 ]);
             }
-            \Log::debug($news);
+            
         } catch (RequestException $e) {
             echo Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
@@ -70,6 +70,8 @@ class ApiController extends Controller
         $fav_img_url =  $request->img_url;
         $user_id = 99;
         FavoriteNews::registFav($user_id, $fav_title, $fav_url, $fav_img_url);
+        // slackに通知
+        \Slack::send($fav_url);
         return;
     }
 
