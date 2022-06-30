@@ -10,10 +10,11 @@
     <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
 </head>
 <body>
+@yield('header')
 <header>
     <h1>tech-news</h1>
 </header>
-<div class="header_menu">
+<div class="news_menu">
     <div class="fav_list">
         <button class="to_fav_list">お気に入り</button>
     </div>
@@ -22,7 +23,6 @@
     </div>
 </div>
 @include('news')
-<footer>
-</footer>
+@yield('footer')
 </body>
 </html>
